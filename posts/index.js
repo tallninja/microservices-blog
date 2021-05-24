@@ -1,3 +1,4 @@
+const { greenBright } = require("chalk");
 const express = require("express");
 const { randomBytes } = require("crypto");
 
@@ -13,7 +14,7 @@ app.get("/posts", (req, res) => {
 
 app.post("/posts", (req, res) => {
   const id = randomBytes(4).toString("hex");
-  const title = req.body;
+  const { title } = req.body;
 
   posts[id] = {
     id: id,
@@ -26,5 +27,5 @@ app.post("/posts", (req, res) => {
 const PORT = process.env.PORT | 5000;
 
 app.listen(PORT, () => {
-  console.log(`Server listening on PORT ${PORT} !`);
+  console.log(greenBright(`Server listening on PORT ${PORT} !`));
 });
