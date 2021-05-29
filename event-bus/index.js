@@ -12,7 +12,7 @@ app.use(express.json());
 app.post("/events", (req, res) => {
   const event = req.body;
 
-  // console.log(event);
+  console.log(`Received Event: ${event.type}`);
 
   axios.post("http://localhost:5000/events", event); //posts-service
   axios.post("http://localhost:5001/events", event); //comments-service

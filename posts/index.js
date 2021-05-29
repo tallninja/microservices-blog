@@ -39,7 +39,7 @@ app.post("/posts", async (req, res) => {
 
 app.post("/events", (req, res) => {
   const event = req.body;
-  console.log(event);
+  // console.log(event);
   res.send({});
 });
 
