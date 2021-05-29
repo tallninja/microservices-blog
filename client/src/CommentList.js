@@ -1,20 +1,20 @@
 import _ from "lodash";
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
+// import axios from "axios";
 
-const CommentList = ({ postId }) => {
-  const [comments, setComments] = useState([]);
+const CommentList = ({ comments }) => {
+  // const [comments, setComments] = useState([]);
 
-  const fetchComments = async () => {
-    const res = await axios.get(
-      `http://localhost:5001/posts/${postId}/comments`
-    );
-    setComments(res.data);
-  };
+  // const fetchComments = async () => {
+  //   const res = await axios.get(
+  //     `http://localhost:5001/posts/${postId}/comments`
+  //   );
+  //   setComments(res.data);
+  // };
 
-  useEffect(() => {
-    fetchComments();
-  }, []);
+  // useEffect(() => {
+  //   fetchComments();
+  // }, []);
 
   const renderedComments = _.map(comments, (comment) => {
     return <li key={comment.id}>{comment.content}</li>;
