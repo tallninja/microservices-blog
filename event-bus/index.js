@@ -14,9 +14,10 @@ app.post("/events", (req, res) => {
 
   console.log(`Received Event: ${event.type}`);
 
-  axios.post("http://localhost:5000/events", event); //posts-service
-  axios.post("http://localhost:5001/events", event); //comments-service
-  axios.post("http://localhost:5002/events", event); //querry-service
+  axios.post("http://localhost:5000/events", event); // posts-service
+  axios.post("http://localhost:5001/events", event); // comments-service
+  axios.post("http://localhost:5002/events", event); // querry-service
+  axios.post("http://localhost:5003/events", event); // comment moderation service
 
   res.send({ status: "OK" });
 });
