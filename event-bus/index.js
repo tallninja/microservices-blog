@@ -9,10 +9,14 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+const eventsDataStore = [];
+
 app.post("/events", (req, res) => {
   const event = req.body;
 
   console.log(`Received Event: ${event.type}`);
+
+  eventsDataStore.push(event);
 
   axios.post("http://localhost:5000/events", event); // posts-service
   axios.post("http://localhost:5001/events", event); // comments-service
@@ -20,6 +24,10 @@ app.post("/events", (req, res) => {
   axios.post("http://localhost:5003/events", event); // comment moderation service
 
   res.send({ status: "OK" });
+});
+
+app.get("/events", (req, res) => {
+  res.send(eventsDataStore);
 });
 
 const PORT = process.env.PORT || 5010;
